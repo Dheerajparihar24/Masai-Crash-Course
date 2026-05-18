@@ -1,18 +1,18 @@
-
-
 // import heroImg from './assets/hero.png'
-import './App.css'
+import "./App.css";
+
+import Navbar from "./components/Navbar";
+import HeroSection from "./components/HeroSection";
+import ProductList from "./components/ProductList";
 
 function App() {
-  
-
   return (
     <>
-      <section className="center">
-
-      </section>
+      <Navbar />
+      <HeroSection />
+      <ProductList />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

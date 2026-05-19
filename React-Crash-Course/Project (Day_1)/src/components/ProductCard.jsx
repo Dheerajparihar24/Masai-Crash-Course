@@ -3,7 +3,6 @@ export default function ProductCard({
   title,
   price,
   inStock,
-  cartCount,
   setCartCount,
 }) {
   const handleCartCount = () => {

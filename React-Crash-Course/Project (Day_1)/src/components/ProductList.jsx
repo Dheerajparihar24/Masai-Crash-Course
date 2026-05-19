@@ -11,6 +11,15 @@ export default function ProductList({ searchQuery, cartCount, setCartCount }) {
   }
   return (
     <main className="product-list">
+
+
+      <div>
+        <p>
+          {" "}
+          <b>Product Count: </b> Showing {filteredProducts.length} Products
+        </p>
+      </div>
+
       {filteredProducts.map((item) => (
         <ProductCard
           key={item.id}

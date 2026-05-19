@@ -16,8 +16,7 @@ function App() {
       <Navbar cartCount={cartCount} />
       <HeroSection />
       <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-
-      <section className="Category filter">
+      <section className="Category-filter">
         Category Filter:
         <select name="" id="">
           <option value="All">All</option>
@@ -26,12 +25,7 @@ function App() {
           <option value="Audio">Audio</option>
         </select>
       </section>
-
-      <ProductList
-        searchQuery={searchQuery}
-        cartCount={cartCount}
-        setCartCount={setCartCount}
-      />
+      <ProductList searchQuery={searchQuery} setCartCount={setCartCount} />
     </>
   );
 }

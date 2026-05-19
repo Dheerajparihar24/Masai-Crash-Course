@@ -1,4 +1,4 @@
-function Navbar() {
+function Navbar({ cartCount }) {
   return (
     <nav className="navbar">
       <div className="navbar-logo">LOGO</div>
@@ -14,6 +14,8 @@ function Navbar() {
           <li>About</li>
         </ul>
       </div>
+
+      <div>Cart {cartCount}</div>
     </nav>
   );
 }

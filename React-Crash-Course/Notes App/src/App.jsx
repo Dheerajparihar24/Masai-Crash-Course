@@ -19,6 +19,18 @@ function App() {
     );
   };
 
+  const handleClearTask = () => {
+    setTodos([]);
+  };
+
+  const handleUpdateTodo = (id, updatedText) => {
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) =>
+        todo.id == id ? { ...todo, todo: updatedText } : todo,
+      ),
+    );
+  };
+
   return (
     <>
       <Navbar />
@@ -27,6 +39,8 @@ function App() {
         todos={todos}
         handleDelete={handleDelete}
         handleToggle={handleToggle}
+        handleClearTask={handleClearTask}
+        handleUpdateTodo={handleUpdateTodo}
       />
     </>
   );

@@ -10,6 +10,7 @@ import { useState } from "react";
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [cartCount, setCartCount] = useState(0);
+  const [filterCategory, setFilterCategory] = useState("All");
 
   return (
     <>
@@ -18,14 +19,21 @@ function App() {
       <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       <section className="Category-filter">
         Category Filter:
-        <select name="" id="">
+        <select
+          value={filterCategory}
+          onChange={(e) => setFilterCategory(e.target.value)}
+        >
           <option value="All">All</option>
           <option value="watch">Watch</option>
           <option value="Electronics">Electronics</option>
           <option value="Audio">Audio</option>
         </select>
       </section>
-      <ProductList searchQuery={searchQuery} setCartCount={setCartCount} />
+      <ProductList
+        filterCategory={filterCategory}
+        searchQuery={searchQuery}
+        setCartCount={setCartCount}
+      />
     </>
   );
 }

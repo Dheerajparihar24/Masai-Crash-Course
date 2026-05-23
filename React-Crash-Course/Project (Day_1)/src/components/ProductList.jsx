@@ -1,21 +1,31 @@
 import products from "../data/products";
 import ProductCard from "./ProductCard";
 
-export default function ProductList({ searchQuery, cartCount, setCartCount }) {
-  const filteredProducts = products.filter((product) =>
-    product.title.toLowerCase().includes(searchQuery.toLowerCase()),
-  );
+export default function ProductList({
+  searchQuery,
+  cartCount,
+  setCartCount,
+  filterCategory,
+}) {
+  const filteredProducts = products.filter((product) => {
+    const searchMatches = product.title
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase());
+
+    const categoryMatches =
+      filterCategory === "All" ||
+      product.category.toLowerCase() === filterCategory.toLowerCase();
+
+    return searchMatches && categoryMatches;
+  });
 
   if (filteredProducts.length == 0) {
     return <p>No products found....</p>;
   }
   return (
     <main className="product-list">
-
-
       <div>
         <p>
-          {" "}
           <b>Product Count: </b> Showing {filteredProducts.length} Products
         </p>
       </div>

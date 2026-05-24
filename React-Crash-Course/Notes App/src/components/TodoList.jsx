@@ -5,7 +5,7 @@ export default function TodoList({
   handleDelete,
   handleToggle,
   handleClearTask,
-  handleUpdateTodo,
+  onUpdate,
 }) {
   if (todos.length == 0) {
     return <h2>No task yet</h2>;
@@ -23,11 +23,12 @@ export default function TodoList({
       {todos.map((todo) => (
         <TodoItem
           key={todo.id}
-          todo={todo.todo}
+          id={todo.id}
+          title={todo.title}
           isCompleted={todo.isCompleted}
           onDelete={() => handleDelete(todo.id)}
           onToggle={() => handleToggle(todo.id)}
-          onUpdate={(updatedText) => handleUpdateTodo(todo.id, updatedText)}
+          onUpdate={onUpdate}
         />
       ))}
     </section>

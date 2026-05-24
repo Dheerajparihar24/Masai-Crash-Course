@@ -23,10 +23,10 @@ function App() {
     setTodos([]);
   };
 
-  const handleUpdateTodo = (id, updatedText) => {
+  const handleTodoUpdate = (id, newTitle) => {
     setTodos((prevTodos) =>
       prevTodos.map((todo) =>
-        todo.id == id ? { ...todo, todo: updatedText } : todo,
+        todo.id == id ? { ...todo, title: newTitle } : todo,
       ),
     );
   };
@@ -40,7 +40,7 @@ function App() {
         handleDelete={handleDelete}
         handleToggle={handleToggle}
         handleClearTask={handleClearTask}
-        handleUpdateTodo={handleUpdateTodo}
+        onUpdate={handleTodoUpdate}
       />
     </>
   );

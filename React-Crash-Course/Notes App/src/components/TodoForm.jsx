@@ -7,7 +7,7 @@ export default function TodoForm({ todos, setTodos }) {
     e.preventDefault();
 
     if (todo.trim() === "") return alert("Fill the input..");
-    setTodos([...todos, { id: Date.now(), todo, isCompleted: false }]);
+    setTodos([...todos, { id: Date.now(), title: todo, isCompleted: false }]);
     setTodo("");
   };
 

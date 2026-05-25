@@ -6,6 +6,7 @@ import NoteList from "./components/NoteList";
 
 function App() {
   const [notes, setNotes] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const handleDelete = (id) => {
     const updatedNotes = notes.filter((note) => note.id !== id);
@@ -22,13 +23,22 @@ function App() {
           }
         : note,
     );
-    setNotes(updatedNote)
+    setNotes(updatedNote);
   };
+
+  const filteredNotes = notes.filter((note) =>
+    note.title.toLowerCase().includes(searchQuery.toLowerCase()),
+  );
+
   return (
     <>
-      <Navbar />
+      <Navbar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       <NoteForm notes={notes} setNotes={setNotes} />
-      <NoteList notes={notes} onDelete={handleDelete} onUpdate={handleUpdate} />
+      <NoteList
+        notes={filteredNotes}
+        onDelete={handleDelete}
+        onUpdate={handleUpdate}
+      />
     </>
   );
 }

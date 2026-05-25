@@ -1,11 +1,18 @@
 import Navbar from "./components/Navbar";
 import NoteForm from "./components/NoteForm";
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NoteList from "./components/NoteList";
 
 function App() {
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState(() => {
+    return JSON.parse(localStorage.getItem("notes")) || [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("notes", JSON.stringify(notes));
+  }, [notes]);
+
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleDelete = (id) => {

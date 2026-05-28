@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/Signup.css";
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
@@ -13,10 +13,19 @@ export default function Signup() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     setError("");
+
+    //Form validation
+    if (email === "") {
+      setError("Email not empty!");
+    } else if (password.length < 6) {
+      setError("password length ≥ 6");
+    }
 
     if (password !== confirmPassword) {
       return setError("Passwords do not match");
@@ -28,9 +37,11 @@ export default function Signup() {
 
     if (!result.success) {
       setError(result.message);
+      setLoading(false);
+      return;
     }
-
     setLoading(false);
+    navigate("/");
   };
 
   return (

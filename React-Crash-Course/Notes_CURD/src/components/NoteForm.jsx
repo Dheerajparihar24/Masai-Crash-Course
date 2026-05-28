@@ -6,7 +6,13 @@ function NoteForm({ notes, setNotes }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const note = { id: Date.now(), title, description };
+    const note = {
+      id: Date.now(),
+      title,
+      description,
+      createdAt: new Date().toString(),
+      pinned: false,
+    };
     setNotes([...notes, note]);
 
     setTitle("");

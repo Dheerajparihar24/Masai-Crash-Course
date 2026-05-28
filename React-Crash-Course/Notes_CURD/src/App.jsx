@@ -37,6 +37,10 @@ function App() {
     note.title.toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
+  const handlePin = () =>{
+    
+  }
+
   return (
     <>
       <Navbar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />

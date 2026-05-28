@@ -1,7 +1,7 @@
 import { useState } from "react";
 function NoteCard({ note, onDelete, onUpdate }) {
-  const { id, title, description } = note;
-  
+  const { id, title, description, createdAt } = note;
+
   const [isEditing, setIsEditing] = useState(false);
   const [updatedTitle, setUpdatedTitle] = useState(title);
   const [updatedDescription, setUpdateDescription] = useState(description);
@@ -34,6 +34,7 @@ function NoteCard({ note, onDelete, onUpdate }) {
       ) : (
         <>
           <h3 className="title">{title}</h3>
+          <p>Created: {createdAt}</p>
           <p className="description">Description: {description}</p>
           <button className="delete-btn" onClick={onDelete}>
             Delete
